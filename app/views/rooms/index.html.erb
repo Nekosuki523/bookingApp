@@ -1,0 +1,31 @@
+<h3>登録済み一覧</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>料金</th>
+      <th>作成日</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+      <% if @room.avatar? %>
+        <td><%= image_tag @room.avatar.url %></td>
+      <% end %>
+        <td><%= room.name_facility %></td>
+        <td><%= room.introduction %></td>
+        <td>￥<%= room.price %>〜</td>
+        <td><%= room.created_at.to_s(:datetime_jp) %></td>
+        <td><%= link_to "参照", room %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "施設の新規登録", :new_room %></p>
+
